@@ -17,3 +17,12 @@ Download most recent full release: [registry-core-2.1.0.war](https://s3-eu-west-
 
 See:
    * [Project governance](https://github.com/der/ukl-registry-poc/wiki/Project-Governance)
+
+
+## Build & run
+
+```
+mvn clean install
+mvn tomcat:run
+```
+Go to http://localhost:8080.

@@ -340,8 +340,8 @@
 
       <!-- Run in root context using maven tomcat plugin -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>tomcat-maven-plugin</artifactId>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
         <configuration>
           <path>/</path>
         </configuration>
