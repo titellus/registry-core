@@ -19,10 +19,32 @@ See:
    * [Project governance](https://github.com/der/ukl-registry-poc/wiki/Project-Governance)
 
 
-## Build & run
+## Build
+
 
 ```
+git clone https://github.com/titellus/registry-core
+cd registry-core
 mvn clean install
-mvn tomcat:run
+```
+
+WAR file is available in `target/registry-core-2.1.1-SNAPSHOT.war`.
+
+## Run the app from the source
+
+```
+mvn tomcat7:run
 ```
 Go to http://localhost:8080.
+
+## Configure
+
+The WAR will point to the data directory defined in `WEB-INF/app.conf`. Maybe something to set using a maven variable.
+
+
+## Define users
+
+* Add users in registry-datadir/conf/user.ini
+* Drop registry-datadir/userstore
+* Restart the app.
+

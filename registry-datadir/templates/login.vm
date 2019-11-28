@@ -1,0 +1,85 @@
+## Parameters:
+##    $return the page to return to (or is that just referrer)
+
+#set($pageTitle="Registry login")
+
+#parse("header.vm")
+#parse("navbar.vm")
+
+#set($provider=false)
+#foreach($cookie in $request.cookies)
+    #if($cookie.name == "ukgovld-login-provider")
+        #set($provider=$cookie.value)
+    #end
+#end
+
+
+<div class="modal-page">
+    <div class="row">
+        <div class="offset1 span11 modal-page-panel">
+            <div class="modal-page-head">
+                <h1>Login or register</h1>
+            </div>
+            <div class="modal-page-body">
+
+                <div class="row space-above">
+
+                    <div class="span5 blob pale-blue">
+                        <div class="blob-inner">
+                            <div class="row">
+                                <div class="span5">
+                                    <h2>Login</h2>
+                                    <p>It is not necessary to login to simply access the registry</p>
+                                </div>
+                            </div>
+                            #if(!$registry.configExtensions.suppressPasswordLogin)
+                                <div >
+                                    <form class="form-horizontal" role="form"  action="$root/system/security/pwlogin" method="post">
+                                        <div class="form-group">
+                                            <label for="userid1" class="col-md-offset-1 col-md-2 control-label">Username</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" id="userid1" name="userid" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password1" class="col-md-offset-1 col-md-2 control-label">Password</label>
+                                            <div class="col-md-8">
+                                                <input type="password" class="form-control" id="password1" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="return" value="$return" />
+                                        <div class="form-group">
+                                            <div class="col-md-offset-1 col-md-10">
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            #end
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row space-above">
+                    <div class="offset1 span10">
+                        <p>If you register or login this site will use cookies to record your
+                            preferred OpenID provider and to record the ID you are logged in with for this session.</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-page-footer">
+                <a href="#if($return)$return#else/#end" class="btn pull-right">Close</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-backdrop in"></div>
+
+#parse("footer.vm")
