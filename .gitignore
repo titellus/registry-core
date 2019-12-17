@@ -26,3 +26,4 @@
 log/
 target/
 /src/main/webapp/WEB-INF/app.conf
+/src/main/webapp/META-INF/context.xml
