@@ -76,12 +76,12 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   <context-param>
     <param-name>AppConfig.app</param-name>
     <!-- Will initialize from first of these it finds -->
-    <param-value>/data/dev/registry-core/registry-datadir/config/app.conf</param-value>
+    <param-value>${datadir}/config/app.conf</param-value>
   </context-param>
   
   <context-param>
     <param-name>registry-file-root</param-name>
-    <param-value>/data/dev/registry-core/registry-datadir</param-value>
+    <param-value>${datadir}</param-value>
   </context-param>
   
   <listener>
