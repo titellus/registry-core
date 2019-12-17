@@ -91,6 +91,8 @@
     <jena.version>3.9.0</jena.version>
     <fuseki.version>3.9.0</fuseki.version>
     <tomcat.version>7.0.94</tomcat.version>
+    <datadir>/data/dev/registry-core/registry-datadir</datadir>
+    <build.webapp.resources>${project.build.directory}/webapp</build.webapp.resources>
   </properties>
 
   <dependencies>
@@ -132,19 +134,19 @@
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-core</artifactId>
       <version>${tomcat.version}</version>
-      <scope>provided</scope>
+<!--      <scope>provided</scope>-->
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-logging-log4j</artifactId>
       <version>${tomcat.version}</version>
-      <scope>provided</scope>
+<!--      <scope>provided</scope>-->
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
       <version>${tomcat.version}</version>
-      <scope>provided</scope>
+<!--      <scope>provided</scope>-->
      </dependency>
      <dependency>
        <groupId>org.glassfish.jersey.connectors</groupId>
@@ -296,6 +298,34 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>copy-filter-webResource</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <escapeString>\</escapeString>
+              <includeEmptyDirs>false</includeEmptyDirs>
+              <outputDirectory>${build.webapp.resources}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/src/main/webResources</directory>
+                  <filtering>true</filtering>
+                  <targetPath>${basedir}/src/main/webapp</targetPath>
+                </resource>
+              </resources>
+              <overwrite>true</overwrite>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
         <version>1.7</version>
         <configuration>
@@ -318,9 +348,10 @@
         </executions>
       </plugin>
 
-      <plugin>
+     <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.1.1</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -331,7 +362,7 @@
           </execution>
         </executions>
       </plugin>
-
+-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -342,6 +373,7 @@
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
         <configuration>
           <path>/</path>
         </configuration>

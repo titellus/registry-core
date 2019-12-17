@@ -25,7 +25,7 @@ See:
 ```
 git clone https://github.com/titellus/registry-core
 cd registry-core
-mvn clean install
+mvn clean install -DskipTests -Ddatadir=/data/dev/registry-core/registry-datadir
 ```
 
 WAR file is available in `target/registry-core-2.1.1-SNAPSHOT.war`.
