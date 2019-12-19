@@ -15,7 +15,7 @@
 
 @prefix reg:  <http://purl.org/linked-data/registry#> .
 
-@base <http://ukgovld-registry.dnsalias.net/> .
+@base <${registry.register.root}> .
 
 <> a reg:Register;
     version:currentVersion <>;

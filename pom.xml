@@ -91,7 +91,12 @@
     <jena.version>3.9.0</jena.version>
     <fuseki.version>3.9.0</fuseki.version>
     <tomcat.version>7.0.94</tomcat.version>
-    <datadir>/data/dev/registry-core/registry-datadir</datadir>
+    <registry.datadir>/data/dev/registry-core/registry-datadir</registry.datadir>
+    <registry.context>/</registry.context>
+    <registry.baseUri>http://localhost:8080/</registry.baseUri>
+<!--    <registry.register.root>http://ukgovld-registry.dnsalias.net/</registry.register.root>-->
+<!--    <registry.register.root>http://localhost:8080/</registry.register.root>-->
+    <registry.register.root>https://registry.ifremer.fr</registry.register.root>
     <build.webapp.resources>${project.build.directory}/webapp</build.webapp.resources>
   </properties>
 
@@ -395,7 +400,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <path>/</path>
+          <path>${registry.context}</path>
         </configuration>
       </plugin>
   

@@ -28,3 +28,4 @@ target/
 /src/main/webapp/WEB-INF/app.conf
 /src/main/webapp/META-INF/context.xml
 /src/main/webapp/WEB-INF/web.xml
+/src/main/webapp/WEB-INF/root-register.ttl

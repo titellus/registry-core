@@ -1,5 +1,5 @@
-<Context reloadable="true" path="/" aliases="/ui=${datadir}/ui">
+<Context reloadable="true" path="${registry.context}" aliases="/ui=${registry.datadir}/ui">
   <Resources>
-    <PreResources base="${datadir}/ui" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/ui" />
+    <PreResources base="${registry.datadir}/ui" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/ui" />
   </Resources>
 </Context>
