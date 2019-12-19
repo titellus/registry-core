@@ -31,7 +31,7 @@ public class CommandCompare extends Command {
 
         Description description = store.getCurrentVersion(target);
         if (description == null) {
-            return new ValidationResponse(NOT_FOUND, "No such register");
+            return new ValidationResponse(NOT_FOUND, String.format("No such register for target '%s'", target));
         }
         else if (!(description instanceof Register)) {
             return new ValidationResponse(BAD_REQUEST, "Can only register items in a register");

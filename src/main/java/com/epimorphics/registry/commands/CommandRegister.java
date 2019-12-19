@@ -95,7 +95,7 @@ public class CommandRegister extends Command {
         boolean isBatch = parameters.containsKey(Parameters.BATCH_MANAGED) || parameters.containsKey(Parameters.BATCH_REFERENCED);
         Description d = store.getCurrentVersion(target);
         if (d == null) {
-            return new ValidationResponse(NOT_FOUND, "No such register");
+            return new ValidationResponse(NOT_FOUND, String.format("No such register for target '%s'", target));
         }
         if (!(d instanceof Register)) {
             return new ValidationResponse(BAD_REQUEST, "Can only register items in a register");

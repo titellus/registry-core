@@ -56,7 +56,7 @@ public class CommandGraphRegister extends CommandRegister {
         // Check the parent register exists
         Description d = store.getCurrentVersion(parent);
         if (d == null) {
-            return new ValidationResponse(NOT_FOUND, "No such register");
+            return new ValidationResponse(NOT_FOUND, String.format("No such register for target '%s'", parent));
         }
         if (!(d instanceof Register)) {
             return new ValidationResponse(BAD_REQUEST, "Can only register items in a register");
